@@ -1,5 +1,4 @@
-{
-    "colleges":[
+{   "colleges": [
     {
         "college_name": "Hansraj College Delhi University - 1",
         "promoted": true,
@@ -852,3 +851,4 @@
     }
     ]
 }
+

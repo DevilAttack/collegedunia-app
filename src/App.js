@@ -7,7 +7,6 @@ import axios from "axios";
 const App = () => {
   const [data, setData] = useState([]);
   const [pageNo, setPageNo] = useState(1);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getInitialData = async () => {
@@ -18,7 +17,6 @@ const App = () => {
   }, [pageNo]);
 
   function getInputFetchData() {
-    console.log("in get data ");
     axios
       .get(`http://localhost:3000/colleges?_page=${pageNo}&_limit=10`)
       .then((response) => {
@@ -38,11 +36,9 @@ const App = () => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       // you're at the bottom of the page
       let pg = pageNo + 1;
-      console.log("event");
-      setLoading(true);
+
       setPageNo(pg);
       getInputFetchData();
-      setLoading(false);
     }
   });
 
@@ -54,8 +50,6 @@ const App = () => {
           <College key={item.college_name} ColInputdata={item} />
         ))}
       </div>
-      {loading && <h1 style={{ color: "red" }}>loading</h1>}
-      {console.log(loading)}
     </div>
   );
 };
